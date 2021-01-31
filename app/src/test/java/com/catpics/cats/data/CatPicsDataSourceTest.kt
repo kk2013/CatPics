@@ -88,7 +88,7 @@ class CatPicsDataSourceTest {
     fun `hat cats filtered out`() = testDispatcher.runBlockingTest {
 
         val category: Category = Category(id = 0, name = "normal")
-        val hatCategory: Category = Category(id = 0, name = "hats")
+        val hatCategory: Category = Category(id = 0, name = "hat")
         val cat: Cat = Cat(id = "1", url = "url", breeds = emptyList(), categories = listOf(category, category))
         val hatCat: Cat = Cat(id = "1", url = "url", breeds = emptyList(), categories = listOf(category, hatCategory))
         val cats: List<Cat> = listOf(cat, hatCat, hatCat, cat)
