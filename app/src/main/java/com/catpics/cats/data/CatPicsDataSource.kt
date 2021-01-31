@@ -47,7 +47,7 @@ class CatPicsDataSource(
                     response.isSuccessful -> {
                         response.body()?.let { cats ->
                             val filteredCats = filterForHats(cats)
-                            callback.onResult(filteredCats.toMutableList(), page + 1)
+                            callback.onResult(filteredCats, page + 1)
                         }
                     }
                 }
