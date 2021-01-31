@@ -4,7 +4,6 @@ import android.util.Log
 import androidx.paging.PageKeyedDataSource
 import com.catpics.api.CatsApi
 import com.catpics.model.Cat
-import com.catpics.model.Cats
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
