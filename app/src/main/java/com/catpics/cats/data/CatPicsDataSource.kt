@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.paging.PageKeyedDataSource
 import com.catpics.api.CatsApi
 import com.catpics.model.Cat
+import com.catpics.model.Cats
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
@@ -22,8 +23,9 @@ class CatPicsDataSource(
                 val response = service.getCats(page = 1, limit = params.requestedLoadSize)
                 when {
                     response.isSuccessful -> {
-                        response.body()?.let {cats ->
-                            callback.onResult(cats.toMutableList(), null, 2)
+                        response.body()?.let { cats ->
+                            val filteredCats = filterForHats(cats)
+                            callback.onResult(filteredCats, null, 2)
                         }
                     }
                 }
@@ -43,8 +45,9 @@ class CatPicsDataSource(
                 val response = service.getCats(page = 1, limit = params.requestedLoadSize)
                 when {
                     response.isSuccessful -> {
-                        response.body()?.let {cats ->
-                            callback.onResult(cats.toMutableList(), page + 1)
+                        response.body()?.let { cats ->
+                            val filteredCats = filterForHats(cats)
+                            callback.onResult(filteredCats.toMutableList(), page + 1)
                         }
                     }
                 }
@@ -60,7 +63,17 @@ class CatPicsDataSource(
         params: LoadParams<Int>,
         callback: LoadCallback<Int, Cat>
     ) {
-        //TODO
+        //Not required in this case
+    }
+
+    private fun filterForHats(cats: List<Cat>): List<Cat> {
+        return cats.filterNot { cat ->
+            cat.categories?.let { categories ->
+                categories.any { category ->
+                    category.name == "hats"
+                }
+            } ?: false
+        }
     }
 
     override fun invalidate() {
