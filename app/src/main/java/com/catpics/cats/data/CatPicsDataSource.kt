@@ -69,7 +69,7 @@ class CatPicsDataSource(
         return cats.filterNot { cat ->
             cat.categories?.let { categories ->
                 categories.any { category ->
-                    category.name == "hats"
+                    category.name == "hat"
                 }
             } ?: false
         }
