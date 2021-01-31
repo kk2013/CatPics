@@ -1,7 +1,6 @@
 package com.catpics.api
 
 import com.catpics.model.Cat
-import com.catpics.model.Cats
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
