@@ -32,27 +32,7 @@ class CatPicsFragment : DaggerFragment() {
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
                              ): View? {
-
-        val view = inflater.inflate(R.layout.cat_pics_fragment, container, false)
-
-        /*cats_recycler_view.viewTreeObserver.addOnGlobalLayoutListener(
-            object : ViewTreeObserver.OnGlobalLayoutListener {
-                override fun onGlobalLayout() {
-                    cats_recycler_view.viewTreeObserver.removeOnGlobalLayoutListener(this)
-                    val width = resources.displayMetrics.widthPixels
-                    val imageWidth = resources.getDimension(R.dimen.image_width)
-                    val spanCount = (width / imageWidth).roundToInt()
-                    gridLayoutManager.spanCount = spanCount
-                    gridLayoutManager.requestLayout()
-                }
-            }
-        )
-
-        gridLayoutManager = GridLayoutManager(activity, 2)
-        cats_recycler_view.layoutManager = gridLayoutManager
-        cats_recycler_view.adapter = catPicsAdapter*/
-
-        return view
+        return inflater.inflate(R.layout.cat_pics_fragment, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
